@@ -1,0 +1,58 @@
+@import "../../styles/colors.scss";
+
+.weather-main-section {
+  &__week-forecast {
+    margin: 0% 2.5% 0% 2.5%;
+    width: 95%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+  }
+
+  &__week-forecast-container {
+    display: flex;
+  }
+
+  &__location {
+    font-size: 24px;
+  }
+
+  &__sunset-sunrise {
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__update-date {
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__update-icon {
+    background-image: url("../../img/clock.png");
+    background-size: 16px;
+    height: 24px;
+    width: 24px;
+    background-position: left 50% bottom 50%;
+    background-repeat: no-repeat;
+  }
+
+  &__sunset-icon {
+    background-image: url("../../img/sunset.png");
+    background-size: 27px;
+    height: 27px;
+    width: 27px;
+    background-position: left 50% bottom 50%;
+    background-repeat: no-repeat;
+  }
+
+  &__sunrise-icon {
+    background-image: url("../../img/sunrise.png");
+    background-size: 27px;
+    height: 27px;
+    width: 27px;
+    background-position: left 50% bottom 50%;
+    background-repeat: no-repeat;
+  }
+}

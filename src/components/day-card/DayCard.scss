@@ -1,0 +1,72 @@
+@import "../../styles/colors.scss";
+
+.weather-main-section {
+  &__week-forecast-icon {
+    height: 48px;
+    width: 48px;
+    background-size: 48px;
+  }
+
+  &__week-forecast-condition {
+    margin: 0px;
+  }
+
+  &__week-forecast-visual {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__week-forecast-stats {
+    list-style-type: none;
+    text-align: start;
+    margin: 0px;
+    padding: 0px 5px 0px 5px;
+    color: $secondary-light-color;
+    border-right: 3px solid $secondary-light-color;
+    width: 120px;
+    
+  }
+
+  &__week-current-heading {
+    text-align: start;
+    font-size: 20px;
+    color: $secondary-light-color;
+    padding-left: 5px;
+    margin: 0px;
+  }
+
+  &__week-current-heading-active {
+    text-align: start;
+    font-size: 20px;
+    color: $secondary-blue-color;
+    padding-left: 5px;
+    margin: 0px;
+    background-color: $secondary-light-color;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  &__week-current {
+    border: 3px solid $secondary-blue-color;
+    border-radius: 4px;
+    margin: 5px;
+    cursor: pointer;
+    width: 155px;
+    background-color: $secondary-blue-color;
+  }
+
+  &__week-forecast-container {
+    display: flex;
+  }
+
+  &__location {
+    font-size: 24px;
+  }
+
+  &__week-forecast-desc {
+    height: 52px;
+    overflow: hidden;
+    white-space: wrap;
+    text-overflow: ellipsis;
+  }
+}

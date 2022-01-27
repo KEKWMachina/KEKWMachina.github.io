@@ -1,0 +1,35 @@
+@import "../../styles/colors.scss";
+
+.holiday {
+  margin: 5px 30px 5px 30px;
+
+  &__name {
+    background-color: $secondary-blue-color;
+    color: $secondary-light-color;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px;
+    position: relative;
+    filter: drop-shadow(-1px 1px 0.08rem $shadow-color);
+  }
+
+  &__description {
+    text-align: start;
+    margin-top: 2px;
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    width: 160px;
+    border: 3px solid $secondary-blue-color;
+    border-radius: 4px;
+    background-color: $secondary-light-color;
+    padding: 5px;
+    z-index: 1;
+    filter: drop-shadow(-1px 1px 0.08rem $shadow-color);
+  }
+
+  .active {
+    display: block;
+  }
+}

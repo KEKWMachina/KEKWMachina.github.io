@@ -1,0 +1,74 @@
+@import "../../styles/colors.scss";
+
+.location-stats {
+  &__main-content {
+    display: flex;
+  }
+
+  &__starting-city {
+    margin: 0.5%;
+  }
+
+  &__destination-city {
+    margin: 0.5%;
+  }
+
+  &__weather-card {
+    background-color: $secondary-blue-color;
+    border-radius: 4px;
+    color: $secondary-light-color;
+    display: flex;
+    width: 300px;
+    height: 114px;
+    margin: 5px;
+    border: 3px solid $secondary-blue-color;
+    filter: drop-shadow(-1px 1px 0.08rem $shadow-color);
+  }
+
+  &__weather-card-stats {
+    display: flex;
+    flex-direction: column;
+    border-right: 3px solid $secondary-light-color;
+    width: 100px;
+    margin-right: 5px;
+  }
+
+  &__weather-card-data {
+    margin: 4px;
+  }
+
+  &__week-forecast-icon-container {
+    margin: 10px;
+    width: 200px;
+  }
+
+  &__week-forecast-icon {
+    margin-left: 20px;
+    height: 48px;
+    width: 48px;
+    background-size: 48px;
+  }
+
+  &__week-forecast-description {
+    text-align: start;
+    margin-left: 5px;
+    padding: 5px;
+    width: 100%;
+    margin: 0px;
+  }
+
+  &__covid-stat {
+    text-align: start;
+    background-color: $primary-blue-color;
+    border-radius: 4px;
+    color: $primary-dark-color;
+    padding: 5px;
+    width: 200px;
+    margin: 10px;
+    filter: drop-shadow(-1px 1px 0.08rem $shadow-color);
+  }
+
+  .city-name {
+    font-size: 24px;
+  }
+}
