@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.32a8f856.css",
-    "main.js": "/static/js/main.7e48230a.js",
-    "static/media/humidity.png": "/static/media/humidity.ef1d41caed040bc74a1f.png",
-    "static/media/clock.png": "/static/media/clock.d03f3086e4a680843ab6.png",
-    "static/media/sunset.png": "/static/media/sunset.0f93536fd070ce514f3b.png",
-    "index.html": "/index.html",
-    "main.32a8f856.css.map": "/static/css/main.32a8f856.css.map",
-    "main.7e48230a.js.map": "/static/js/main.7e48230a.js.map"
+    "main.css": "/weather-app/static/css/main.9206b6fb.css",
+    "main.js": "/weather-app/static/js/main.7e48230a.js",
+    "static/media/humidity.png": "/weather-app/static/media/humidity.ef1d41caed040bc74a1f.png",
+    "static/media/clock.png": "/weather-app/static/media/clock.d03f3086e4a680843ab6.png",
+    "static/media/sunset.png": "/weather-app/static/media/sunset.0f93536fd070ce514f3b.png",
+    "index.html": "/weather-app/index.html",
+    "main.9206b6fb.css.map": "/weather-app/static/css/main.9206b6fb.css.map",
+    "main.7e48230a.js.map": "/weather-app/static/js/main.7e48230a.js.map"
   },
   "entrypoints": [
-    "static/css/main.32a8f856.css",
+    "static/css/main.9206b6fb.css",
     "static/js/main.7e48230a.js"
   ]
 }
