@@ -4,11 +4,8 @@ import Holidays from "./components/holidays/Holidays";
 import CovidStatistics from "./components/covid-section/CovidStatistics";
 import DestinationCity from "./components/destination-city-selector/DestinationCity";
 import { useState, useEffect } from "react";
-import getWeather from "./api.service/getWeather";
-import getCOVIDStats from "./api.service/getCovidStats";
-import getTimeZone from "./api.service/getTimeZone";
-import getHolidays from "./api.service/getHolidays";
-import getUserLocation from "./api.service/getUserLocation";
+import cityGetter from "./helper-functions/cityGetter";
+import getData from "./api.service/getData";
 import "./App.scss";
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -21,54 +18,23 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   function handleCityChage(newCity) {
-    if (newCity === "") {
-      setCity((prev) => prev);
-    } else {
-      setCity(newCity);
-    }
+    setCity(newCity);
   }
 
   useEffect(() => {
-    async function getData() {
-      setLoading(true);
-      if (!city) {
-        async function getStartingCity() {
-          await navigator.geolocation.getCurrentPosition(success, reject);
-
-          async function success(pos) {
-            const locationData = await getUserLocation(
-              pos.coords.latitude,
-              pos.coords.longitude
-            );
-            setCity(locationData.city);
-          }
-
-          function reject() {
-            setCity("Sumy");
-          }
-        }
-        getStartingCity();
-      }
-
-      if (city) {
-        const weatherRequest = await getWeather(city);
-        setWeatherData(weatherRequest);
-        const name =
-          weatherRequest.location.country === "United States of America"
-            ? "US"
-            : weatherRequest.location.country;
-        const covidData = await getCOVIDStats(name);
-        setCovidStats(covidData);
-        const time = await getTimeZone(weatherRequest.location.country);
-        setTimezone(time);
-        const holidays = await getHolidays(covidData.All.abbreviation);
-        setHolidays(holidays);
-        if (!weatherRequest?.error) {
-          setLoading(false);
-        }
-      }
+    setLoading(true);
+    if (!city) {
+      cityGetter(setCity);
+    } else {
+      getData(
+        setWeatherData,
+        setCovidStats,
+        setTimezone,
+        setHolidays,
+        setLoading,
+        city
+      );
     }
-    getData();
   }, [city]);
 
   return (
@@ -79,14 +45,34 @@ function App() {
           <p>{`${weatherData.error.message}`}</p>
         </div>
       )}
-      {!loading ? (
+      {!loading && (
         <>
-          <Weather weatherData={weatherData} timezone={timezone} />
-          <DestinationCity weatherData={weatherData} covidStats={covidStats} />
-          <Holidays holidays={holidays} />
-          <CovidStatistics covidStats={covidStats} />
+          {!weatherData?.error && (
+            <>
+              <Weather weatherData={weatherData} timezone={timezone} />
+              <DestinationCity
+                weatherData={weatherData}
+                covidStats={covidStats}
+              />
+            </>
+          )}
+          {holidays.meta.code === 200 ? (
+            <Holidays holidays={holidays} />
+          ) : (
+            <div className="onload-error">
+              Holidays data is not available
+            </div>
+          )}
+          {Object.entries(covidStats)[0][0] === "All" ? (
+            <CovidStatistics covidStats={covidStats} />
+          ) : (
+            <div className="onload-error">
+              Covid data is not available
+            </div>
+          )}
         </>
-      ) : (
+      )}
+      {loading && !weatherData?.error && (
         <>
           <div className="loading-message">Loading, please wait...</div>
           <ClipLoader color={"#393E46"} size={100} />

@@ -9,8 +9,8 @@
   }
 
   &__heading {
-      margin-top: 15px;
-      font-size: 24px;
+    margin-top: 15px;
+    font-size: 24px;
   }
 
   &__stat {
@@ -20,5 +20,15 @@
     padding: 10px;
     border-radius: 4px;
     filter: drop-shadow(-1px 1px 0.08rem $shadow-color);
+  }
+}
+
+@media (max-width: 500px) {
+  .covid-statistics {
+    margin-bottom: 50px;
+
+    &__main-section {
+      flex-direction: column;
+    }
   }
 }

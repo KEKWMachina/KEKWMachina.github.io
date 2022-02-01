@@ -16,9 +16,11 @@ function Weather({ weatherData, timezone }) {
     <div className="weather-main-section">
       <div className="weather-main-section__location-container">
         <span className="weather-main-section__location">
-          {`${weatherData.location.name}, ${
-            weatherData.location.country
-          } ${formatDate(timezone)}`}
+          {`${weatherData.location.name}, ${weatherData.location.country} ${
+            !timezone?.error
+              ? formatDate(timezone)
+              : "Timezone data is temporarily unavailable"
+          }`}
         </span>
       </div>
       <div className="weather-main-section__week-forecast">

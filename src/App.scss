@@ -8,28 +8,54 @@
 .App {
   width: 60%;
   text-align: center;
-  margin-left: 20%;
+  margin: 0% 20% 0% 20%;
+  
   border: 3px solid $secondary-light-color;
   border-radius: 4px;
   background-color: $secondary-light-color;
-  height: 900px;
+  height: 1000px;
 
   .loading-message {
     font-size: 24px;
     margin: 40px 0px 40px 0px;
+  }
+
+  .onload-error {
+    font-size: 24px;
+    margin: 15px;
   }
 }
 
 @media (max-width: 769px) {
   .App {
     width: 80%;
-    margin-left: 10%;
+    margin: 0px 10% 0px 10%;
+  }
+}
+
+@media (max-width: 600px) {
+  .App {
+    height: 1100px;
+  }
+}
+
+@media (max-width: 500px) {
+  .App {
+    height: 1250px;
+  }
+}
+
+
+@media (max-width: 426px) {
+  .App {
+    width: 96%;
+    margin: 5px;
   }
 }
 
 @media (max-width: 426px) {
   .App {
-    width: 98%;
-    margin-left: 1%;
+    width: 95%;
+    margin: 5px;
   }
 }

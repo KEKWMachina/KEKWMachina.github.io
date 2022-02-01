@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/KEKWMachina.github.io/static/css/main.3b81ba08.css",
-    "main.js": "/KEKWMachina.github.io/static/js/main.7e48230a.js",
-    "static/media/humidity.png": "/KEKWMachina.github.io/static/media/humidity.ef1d41caed040bc74a1f.png",
-    "static/media/clock.png": "/KEKWMachina.github.io/static/media/clock.d03f3086e4a680843ab6.png",
-    "static/media/sunset.png": "/KEKWMachina.github.io/static/media/sunset.0f93536fd070ce514f3b.png",
-    "index.html": "/KEKWMachina.github.io/index.html",
-    "main.3b81ba08.css.map": "/KEKWMachina.github.io/static/css/main.3b81ba08.css.map",
-    "main.7e48230a.js.map": "/KEKWMachina.github.io/static/js/main.7e48230a.js.map"
+    "main.css": "/weather-app/static/css/main.cbc5279a.css",
+    "main.js": "/weather-app/static/js/main.51a61b40.js",
+    "static/media/humidity.png": "/weather-app/static/media/humidity.ef1d41caed040bc74a1f.png",
+    "static/media/clock.png": "/weather-app/static/media/clock.d03f3086e4a680843ab6.png",
+    "static/media/sunset.png": "/weather-app/static/media/sunset.0f93536fd070ce514f3b.png",
+    "index.html": "/weather-app/index.html",
+    "main.cbc5279a.css.map": "/weather-app/static/css/main.cbc5279a.css.map",
+    "main.51a61b40.js.map": "/weather-app/static/js/main.51a61b40.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b81ba08.css",
-    "static/js/main.7e48230a.js"
+    "static/css/main.cbc5279a.css",
+    "static/js/main.51a61b40.js"
   ]
 }

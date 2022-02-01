@@ -2,7 +2,6 @@
 
 .destination-city {
   text-align: center;
-  width: 95%;
   margin: 0% 2.5% 0% 2.5%;
   position: relative;
 
@@ -30,7 +29,7 @@
   }
 
   &__selector {
-    height: 120px;
+    height: 160px;
     width: 80%;
     margin: 0% 10% 0 10%;
     border: 3px solid $secondary-blue-color;
@@ -45,6 +44,7 @@
   &__selected-city-name {
     font-size: 24px;
     margin-top: 5px;
+    margin-bottom: 10px;
   }
 
   &__close-btn-container {
@@ -64,16 +64,37 @@
     cursor: pointer;
   }
 
+  &__searchfield-container {
+    display: flex;
+    margin: 10px 2.5% 0% 2.5%;
+  }
+
   &__searchfield {
     border: none;
-    width: 95%;
-    height: 30px;
-    font-size: 24px;
+    width: 88%;
+    font-size: 18px;
     border-radius: 4px;
-    margin-top: 10px;
     background-color: $secondary-blue-color;
     color: $secondary-light-color;
     filter: drop-shadow(-1px 1px 0.08rem $shadow-color);
+  }
+
+  &__submit-btn {
+    background-color: $primary-blue-color;
+    border: none;
+    border-radius: 4px;
+    width: 12%;
+    cursor: pointer;
+  }
+
+  &__modal-close-btn {
+    border-radius: 4px;
+    border: none;
+    background-color: $secondary-blue-color;
+    color: $secondary-light-color;
+    height: 24px;
+    width: 60px;
+    cursor: pointer;
   }
 
   &__searchfield:focus {
@@ -104,14 +125,21 @@
   }
 
   &__main-content {
+    width: 100%;
     display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
   }
+}
 
-  &__starting-city {
-    margin: 1%;
-  }
+@media (max-width: 650px) {
+  .destination-city {
+    &__weather-compare-section {
+      height: 1160px;
+    }
 
-  &__destination-city {
-    margin: 1%;
+    &__main-content {
+      flex-direction: column;
+    }
   }
 }

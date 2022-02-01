@@ -1,7 +1,6 @@
-import debounce from "../../helper-functions/debounce";
 import { useState } from "react";
-import { useEffect } from "react";
 import LocationStatistics from "../location-stats/LocationStatictics";
+import getDestinationData from "../../api.service/getDestinationData";
 import "./DestinationCity.scss";
 
 function DestinationCity({ weatherData, covidStats }) {
@@ -10,38 +9,6 @@ function DestinationCity({ weatherData, covidStats }) {
   const [destinationCity, setDestinationCity] = useState();
   const [activeWeatherData, setActiveWeatherData] = useState();
   const [covidData, setCovidData] = useState();
-  const debouncedCitySelector = debounce(setDestinationCity, 1000);
-
-  useEffect(() => {
-    async function getDestinationData() {
-      try {
-        const request = await fetch(
-          `http://api.weatherapi.com/v1/forecast.json?key=1766146c39b24c50939112055221301 &q=${destinationCity}&days=10&aqi=yes&alerts=yes`
-        );
-        const response = await request.json();
-
-        if (response?.location?.name) {
-          const covidData = await fetch(
-            `https://covid-api.mmediagroup.fr/v1/vaccines?country=${response.location.country}`
-          );
-          const covidDataResponse = await covidData.json();
-
-          setCovidData(covidDataResponse);
-          setActiveWeatherData(response);
-          setActive(false);
-        } else {
-          setActiveWeatherData(response);
-        }
-      } catch (err) {
-        setActiveWeatherData(err);
-      }
-    }
-    if (destinationCity) {
-      getDestinationData();
-    }
-  }, [destinationCity]);
-
-  console.log(covidStats, activeWeatherData);
 
   return (
     <div className="destination-city">
@@ -54,18 +21,48 @@ function DestinationCity({ weatherData, covidStats }) {
             }}
           ></button>
         </div>
-        <input
-          type="text"
-          placeholder="Search"
-          className="destination-city__searchfield"
-          onChange={(event) => {
-            debouncedCitySelector(event.target.value);
+        <form
+          className="destination-city__searchfield-container"
+          onSubmit={(event) => {
+            event.preventDefault();
+            getDestinationData(
+              destinationCity,
+              setCovidData,
+              setActiveWeatherData,
+              setActive
+            );
           }}
-        />
+        >
+          <input
+            type="text"
+            placeholder="Search"
+            className="destination-city__searchfield"
+            onChange={(event) => {
+              setDestinationCity(event.target.value);
+            }}
+          />
+          <button
+            type="submit"
+            className="destination-city__submit-btn"
+            disabled={!destinationCity}
+          >
+            Find
+          </button>
+        </form>
         {activeWeatherData?.location?.name && (
-          <p className="destination-city__selected-city-name">
-            {activeWeatherData.location.name}
-          </p>
+          <>
+            <p className="destination-city__selected-city-name">
+              {`${activeWeatherData.location.name}, ${activeWeatherData.location.country}`}
+            </p>
+            <button
+              className="destination-city__modal-close-btn"
+              onClick={() => {
+                setActive(false);
+              }}
+            >
+              Close
+            </button>
+          </>
         )}
         {activeWeatherData?.error?.message && (
           <p className="destination-city__selected-city-name">
@@ -84,7 +81,7 @@ function DestinationCity({ weatherData, covidStats }) {
             ></button>
           </div>
           <div className="destination-city__main-content">
-            <div className="destination-city__starting-city">
+            <div className="destination-city__destination-city">
               <LocationStatistics
                 weatherData={weatherData}
                 covidStats={covidStats}
@@ -100,7 +97,13 @@ function DestinationCity({ weatherData, covidStats }) {
         </div>
       )}
       <p className="destination-city__header">
-        Compare current weather with another location
+        {`Compare current weather in ${weatherData.location.name}, ${
+          weatherData.location.country
+        } with ${
+          activeWeatherData?.location?.name
+            ? `${activeWeatherData.location.name}, ${activeWeatherData.location.country}`
+            : "another location"
+        }`}
       </p>
       <div className="destination-city__btn-container">
         <button

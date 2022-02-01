@@ -1,16 +1,17 @@
 @import "../../styles/colors.scss";
 
 .location-stats {
+
   &__main-content {
     display: flex;
   }
 
   &__starting-city {
-    margin: 0.5%;
+    margin: 1%;
   }
 
   &__destination-city {
-    margin: 0.5%;
+    margin: 1%;
   }
 
   &__weather-card {
@@ -18,7 +19,7 @@
     border-radius: 4px;
     color: $secondary-light-color;
     display: flex;
-    width: 300px;
+    width: 90%;
     height: 114px;
     margin: 5px;
     border: 3px solid $secondary-blue-color;
@@ -70,5 +71,49 @@
 
   .city-name {
     font-size: 24px;
+  }
+}
+
+
+@media(max-width: 1480px) {
+  .location-stats {
+    &__weather-card {
+      width: 300px;
+    }
+  }
+}
+
+@media(max-width: 1390px) {
+  .location-stats {
+    &__weather-card {
+      width: 250px;
+    }
+  }
+}
+
+@media(max-width: 1165px) {
+  .location-stats {
+    &__weather-card {
+      width: 220px;
+    }
+  }
+}
+
+@media(max-width: 1165px) {
+  .location-stats {
+    &__weather-card {
+      width: 200px;
+    }
+    &__covid-stat {
+      width: 180px;
+    }
+  }
+}
+
+@media(max-width: 650px) {
+  .location-stats {
+    &__weather-card {
+      width: 95%;
+    }
   }
 }

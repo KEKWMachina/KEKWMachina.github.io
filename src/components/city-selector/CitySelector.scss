@@ -6,14 +6,31 @@
 
     &__searchfield {
         border: none;
-        width: 95%;
-        height: 30px;
-        font-size: 24px;
+        width: 85%;
+        font-size: 18px;
         border-radius: 4px;
         margin-top: 20px;
         background-color: $secondary-blue-color;
         color: $secondary-light-color;
         filter: drop-shadow(-1px 1px 0.08rem $shadow-color);
+        height: 30px;
+    }
+
+    &__submit-btn {
+        width: 10%;
+        margin-left: 3px;
+        font-size: 18px;
+        border-radius: 4px;
+        background-color: $primary-blue-color;
+        border: none;
+        text-align: start;
+        padding-left: 10px;
+        background-image: url("../../img/search_icon.png");
+        background-size: 40px;
+        background-repeat: no-repeat;
+        background-position: right 5% bottom 50%;
+        cursor: pointer;
+        height: 30px;
     }
 
     &__searchfield:focus {

@@ -1,22 +1,36 @@
 import { majorCities } from "../../api.service/majorCities";
 import { v4 as uuidv4 } from "uuid";
-import debounce from "../../helper-functions/debounce";
+import { useState } from "react";
 import "./CitySelector.scss";
 
 function CitySelector({ handleCityChage }) {
-  const debouncedCityChange = debounce(handleCityChage, 1000);
+  const [city, setCity] = useState();
 
   return (
     <div className="city-selector">
       <div className="city-selector__searchfield-container">
-        <input
-          type="text"
-          placeholder="Search"
-          className="city-selector__searchfield"
-          onChange={(event) => {
-            debouncedCityChange(event.target.value);
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleCityChage(city);
           }}
-        />
+        >
+          <input
+            type="text"
+            placeholder="Search"
+            className="city-selector__searchfield"
+            onChange={(event) => {
+              setCity(event.target.value);
+            }}
+          />
+          <button
+            type="submit"
+            className="city-selector__submit-btn"
+            disabled={!city}
+          >
+            Find
+          </button>
+        </form>
       </div>
       <div className="city-selector__cities">
         {majorCities.map((city) => {
